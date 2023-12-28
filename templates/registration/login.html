@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% load crispy_forms_filters %}
+
+{% block title %}<title>Login • ToTheDoctor</title>{% endblock %}
+
+{% block login %}
+  {% if form.errors %}
+    <p>Your username and password didn't match. Please try again.</p>
+  {% endif %}
+
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <div class="container-fluid">
+    <div class="row justify-content-center">
+      <div class="col-sm-5">
+        <img class="mb-4" src="/static/image/logo.png" alt width="70" height="70">
+        <span class="navbar-brand mb-0 h1">ToTheDoctor</span>
+        {% if next %}
+          <h3>Please sign in</h3>
+        {% endif %}
+        <form method="post" action="{% url 'login' %}">
+          {% csrf_token %}
+            {{ form|crispy }}
+
+          <div class="form-check text-start my-3">
+            <input type="checkbox" class="form-check-input" value="remember-me" id="flexCheckDefault">
+            <label class="form-check-label" for="flexCheckDefault">Remember me</label>
+          </div>
+
+          <input type="submit" value="Sing in" class="btn btn-primary btn-block" />
+          <input type="hidden" name="next" value="{{ next }}" />
+
+          <p class="mt-5 mb-3 text-body-secondary">© 2023</p>
+        </form>
+      </div>
+    </div>
+  </div>
+{% endblock %}

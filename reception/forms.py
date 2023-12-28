@@ -24,6 +24,24 @@ class VisitForm(forms.ModelForm):
 def validate_date_time(date_time):
     """The function checks the visit date field.
     The visit date must be greater than the current date. Timezone-aware!"""
+    queryset = Visit.objects.select_related(
+        "treatment_direction",
+        "doctor",
+        "patient"
+    ).filter(
+        patient__deleted_at__isnull=True
+    ).filter(
+        doctor__deleted_at__isnull=True
+    ).filter(
+        date_time__gte=datetime.now(date_time.tzinfo)
+    )
+    for busy_date_time in queryset:
+        if date_time == busy_date_time.date_time:
+            raise ValidationError(
+                "This date / time is already taken. "
+                "Please choose another date / time."
+            )
+
     if date_time <= datetime.now(date_time.tzinfo):
         raise ValidationError(
             "The visit date is overdue. Enter a visit date "

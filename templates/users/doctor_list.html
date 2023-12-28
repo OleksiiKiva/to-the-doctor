@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+
+{% block title %}<title>List of doctors • ToTheDoctor</title>{% endblock %}
+
+{% block content %}
+  <br>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col">
+        <a href="{% url 'reception:index' %}" role="button" class="btn btn-outline-primary">
+        < Back
+      </a>
+      </div>
+
+      <div class="col">
+        <h2 class="text-center">List of doctors</h2>
+      </div>
+
+      {% if user.is_staff %}
+        <div class="col">
+          <a href="{% url 'user:doctor-create' %}" class="btn btn-primary link-to-page">
+            Create a doctor
+          </a>
+        </div>
+      {% endif %}
+
+    </div>
+
+    {% include "includes/search.html" %}
+
+    <div class="row border-bottom px-0">
+      <div class="col">
+        <br>
+        <br>
+        {% if doctor_list %}
+        <table class="table table-borderless table-hover">
+          <thead class="thead-light border-top">
+            <tr>
+              <th scope="col">Doctor</th>
+              <th scope="col">Specialization</th>
+              <th scope="col">Certificate up to</th>
+              <th scope="col">Username</th>
+              <th scope="col">E-mail</th>
+              <th scope="col">#</th>
+            </tr>
+          </thead>
+          {% for doctor in doctor_list %}
+          <tbody>
+            <tr>
+              <td>
+                <a href="{% url 'user:doctor-detail' pk=doctor.id %}" class="text-warning">
+                  {{ doctor.first_name }} {{ doctor.last_name }}
+                </a>
+              </td>
+              <td>
+                {% for specialization in doctor.specializations.all %}
+                  {{ specialization }}
+                {% endfor %}
+              </td>
+              <td>{{ doctor.recertification_with }}</td>
+              <td>{{ doctor.username }}</td>
+              <td>{{ doctor.email }}</td>
+              <td>{{ doctor.id }}</td>
+            </tr>
+          </tbody>
+          {% endfor %}
+        </table>
+        {% else %}
+          {% include "includes/fail_request.html" %}
+        {% endif %}
+      </div>
+    </div>
+
+  </div>
+
+{% endblock %}

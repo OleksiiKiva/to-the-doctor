@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render
@@ -14,6 +16,8 @@ def index(request):
     """View function for the home page of the site."""
     num_visits = Visit.objects.filter(
         deleted_at__isnull=True
+    ).filter(
+        date_time__gte=datetime.now()
     ).count()
     num_patients = Patient.objects.filter(
         deleted_at__isnull=True
@@ -59,6 +63,8 @@ class VisitListView(LoginRequiredMixin, generic.ListView):
             patient__deleted_at__isnull=True
         ).filter(
             doctor__deleted_at__isnull=True
+        ).filter(
+            date_time__gte=datetime.now()
         )
         form = VisitSearchForm(self.request.GET)
         if form.is_valid():

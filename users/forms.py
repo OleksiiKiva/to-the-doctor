@@ -20,6 +20,32 @@ class UserSearchForm(forms.Form):
     )
 
 
+class PatientForm(forms.ModelForm):
+    class Meta(UserCreationForm.Meta):
+        model = Patient
+        fields = (
+            "first_name",
+            "last_name",
+            "phone_number",
+            "date_of_birth",
+        )
+
+    def clean_date_of_birth(self):
+        return validate_date_of_birth(self.cleaned_data["date_of_birth"])
+
+
+def validate_date_of_birth(date_of_birth):
+    """The function that checks the date of birth field.
+    Patients must be at least six months old."""
+    if date_of_birth >= date.today() - timedelta(6 * 365 / 12):
+        raise ValidationError(
+            "Date of birth less than 6 months. "
+            "Patients in this age group are not served."
+        )
+
+    return date_of_birth
+
+
 class DoctorForm(UserCreationForm):
     specializations = forms.ModelMultipleChoiceField(
         queryset=Specialization.objects.all(),

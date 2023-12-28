@@ -46,16 +46,20 @@
         </p>
         <br>
 
-        {% if doctor.visits.last and doctor.visits.last.patient.deleted_at is none %}
-          <p class="font-weight-light text-muted border-top">Nearest visit:
-            <span class="font-weight-normal">{{ doctor.visits.last.date_time }}</span>
-          </p>
+        {% if doctor.visits.first and doctor.visits.first.patient.deleted_at is None %}
+          {% now "o-j-N" as today_date %}
+          {% if today_date < doctor.visits.first.date_time|date:"o-j-N" %}
+            <p class="font-weight-light text-muted border-top">Nearest visit:
+              <span class="font-weight-normal">{{ doctor.visits.first.date_time }}</span>
+            </p>
 
-          <p class="font-weight-light text-muted border-bottom">Patient:
-            <a href="{% url 'user:patient-detail' pk=doctor.visits.last.patient.id %}" class="text-warning">
-              {{ doctor.visits.last.patient }}
-            </a>
-          </p>
+            <p class="font-weight-light text-muted border-bottom">Patient:
+              <a href="{% url 'user:patient-detail' pk=doctor.visits.last.patient.id %}" class="text-warning">
+                {{ doctor.visits.first.patient }}
+                {{ doctor.visits.first.date_time|date:"o-j-N" }}
+              </a>
+            </p>
+          {% endif %}
         {% endif %}
         <br>
         <br>

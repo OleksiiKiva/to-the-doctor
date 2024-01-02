@@ -35,11 +35,11 @@ def validate_date_time(date_time):
     ).filter(
         date_time__gte=datetime.now(date_time.tzinfo)
     )
-    for busy_date_time in queryset:
-        if date_time == busy_date_time.date_time:
+    for visit in queryset:
+        if date_time == visit.date_time:
             raise ValidationError(
-                "This date / time is already taken. "
-                "Please choose another date / time."
+                f"{visit.doctor} already has an entry for this date and time. "
+                "Please select another date/time or doctor."
             )
 
     if date_time <= datetime.now(date_time.tzinfo):

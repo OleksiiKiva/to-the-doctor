@@ -13,20 +13,20 @@ from users.models import Patient, Doctor
 
 @login_required
 def index(request):
-    """View function for the home page of the site."""
-    num_visits = Visit.objects.filter(
-        deleted_at__isnull=True
-    ).filter(
-        date_time__gte=datetime.now()
-    ).count()
-    num_patients = Patient.objects.filter(
-        deleted_at__isnull=True
-    ).count()
-    num_doctors = Doctor.objects.filter(
-        is_staff=False
-    ).filter(
-        deleted_at__isnull=True
-    ).count()
+    """
+    View function for the home page of the site.
+    """
+    num_visits = (
+        Visit.objects.filter(deleted_at__isnull=True)
+        .filter(date_time__gte=datetime.now())
+        .count()
+    )
+    num_patients = Patient.objects.filter(deleted_at__isnull=True).count()
+    num_doctors = (
+        Doctor.objects.filter(is_staff=False)
+        .filter(deleted_at__isnull=True)
+        .count()
+    )
 
     num_visit_page = request.session.get("num_visit_page", 0) + 1
     request.session["num_visit_page"] = num_visit_page
@@ -55,16 +55,13 @@ class VisitListView(LoginRequiredMixin, generic.ListView):
         return context
 
     def get_queryset(self):
-        queryset = Visit.objects.select_related(
-            "treatment_direction",
-            "doctor",
-            "patient"
-        ).filter(
-            patient__deleted_at__isnull=True
-        ).filter(
-            doctor__deleted_at__isnull=True
-        ).filter(
-            date_time__gte=datetime.now()
+        queryset = (
+            Visit.objects.select_related(
+                "treatment_direction", "doctor", "patient"
+            )
+            .filter(patient__deleted_at__isnull=True)
+            .filter(doctor__deleted_at__isnull=True)
+            .filter(date_time__gte=datetime.now())
         )
         form = VisitSearchForm(self.request.GET)
         if form.is_valid():
@@ -77,14 +74,14 @@ class VisitListView(LoginRequiredMixin, generic.ListView):
 
 class VisitDetailView(LoginRequiredMixin, generic.DetailView):
     model = Visit
-    queryset = Visit.objects.select_related(
-        "treatment_direction",
-        "doctor",
-        "patient",
-    ).filter(
-        patient__deleted_at__isnull=True
-    ).filter(
-        doctor__deleted_at__isnull=True
+    queryset = (
+        Visit.objects.select_related(
+            "treatment_direction",
+            "doctor",
+            "patient",
+        )
+        .filter(patient__deleted_at__isnull=True)
+        .filter(doctor__deleted_at__isnull=True)
     )
 
 

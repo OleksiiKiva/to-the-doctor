@@ -19,9 +19,7 @@ class PatientListView(LoginRequiredMixin, generic.ListView):
         return context
 
     def get_queryset(self):
-        queryset = Patient.objects.filter(
-            deleted_at__isnull=True
-        )
+        queryset = Patient.objects.filter(deleted_at__isnull=True)
         form = UserSearchForm(self.request.GET)
         if form.is_valid():
             return queryset.filter(
@@ -33,9 +31,7 @@ class PatientListView(LoginRequiredMixin, generic.ListView):
 
 class PatientDetailView(LoginRequiredMixin, generic.DetailView):
     model = Patient
-    queryset = Patient.objects.filter(
-        deleted_at__isnull=True
-    )
+    queryset = Patient.objects.filter(deleted_at__isnull=True)
 
 
 class PatientCreateView(LoginRequiredMixin, generic.CreateView):
@@ -68,12 +64,10 @@ class DoctorListView(LoginRequiredMixin, generic.ListView):
         return context
 
     def get_queryset(self):
-        queryset = Doctor.objects.prefetch_related(
-            "specializations"
-        ).filter(
-            is_staff=False
-        ).filter(
-            deleted_at__isnull=True
+        queryset = (
+            Doctor.objects.prefetch_related("specializations")
+            .filter(is_staff=False)
+            .filter(deleted_at__isnull=True)
         )
         form = UserSearchForm(self.request.GET)
         if form.is_valid():

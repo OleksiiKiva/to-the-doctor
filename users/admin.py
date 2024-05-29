@@ -6,7 +6,10 @@ from users.models import Specialization, Patient, Doctor
 
 @admin.register(Specialization)
 class SpecializationAdmin(admin.ModelAdmin):
-    list_display = ("__str__", "deleted_at",)
+    list_display = (
+        "__str__",
+        "deleted_at",
+    )
     list_filter = ("deleted_at",)
 
 
@@ -32,7 +35,12 @@ class DoctorAdmin(UserAdmin):
         (
             (
                 "Additional info",
-                {"fields": ("specializations", "recertification_with",)}
+                {
+                    "fields": (
+                        "specializations",
+                        "recertification_with",
+                    )
+                },
             ),
         )
     )

@@ -6,7 +6,7 @@ from .views import (
     VisitDetailView,
     VisitCreateView,
     VisitUpdateView,
-    VisitDeleteView
+    VisitDeleteView,
 )
 
 app_name = "reception"
@@ -19,11 +19,11 @@ urlpatterns = [
     path(
         "visits/<int:pk>/update/",
         VisitUpdateView.as_view(),
-        name="visit-update"
+        name="visit-update",
     ),
     path(
         "visits/<int:pk>/delete/",
         VisitDeleteView.as_view(),
-        name="visit-delete"
+        name="visit-delete",
     ),
 ]

@@ -12,11 +12,7 @@ class UserSearchForm(forms.Form):
         max_length=10,
         required=False,
         label="",
-        widget=forms.TextInput(
-            attrs={
-                "placeholder": "Search by last name"
-            }
-        ),
+        widget=forms.TextInput(attrs={"placeholder": "Search by last name"}),
     )
 
 
@@ -35,8 +31,10 @@ class PatientForm(forms.ModelForm):
 
 
 def validate_date_of_birth(date_of_birth):
-    """The function that checks the date of birth field.
-    Patients must be at least six months old."""
+    """
+    The function that checks the date of birth field.
+    Patients must be at least six months old.
+    """
     if date_of_birth >= date.today() - timedelta(6 * 365 / 12):
         raise ValidationError(
             "Date of birth less than 6 months. "
@@ -72,8 +70,10 @@ class DoctorForm(UserCreationForm):
 
 
 def validate_recertification_with(recertification_with):
-    """The function checks the validity period of the doctor's certificate.
-    The date on the certificate must be greater than the current date."""
+    """
+    Check the validity period of the doctor's certificate.
+    The date on the certificate must be greater than the current date.
+    """
     if recertification_with <= date.today():
         raise ValidationError(
             "The date has expired. "

@@ -22,18 +22,17 @@ class VisitForm(forms.ModelForm):
 
 
 def validate_date_time(date_time):
-    """The function checks the visit date field.
-    The visit date must be greater than the current date. Timezone-aware!"""
-    queryset = Visit.objects.select_related(
-        "treatment_direction",
-        "doctor",
-        "patient"
-    ).filter(
-        patient__deleted_at__isnull=True
-    ).filter(
-        doctor__deleted_at__isnull=True
-    ).filter(
-        date_time__gte=datetime.now(date_time.tzinfo)
+    """
+    Check the visit date field.
+    The visit date must be greater than the current date. Timezone-aware!
+    """
+    queryset = (
+        Visit.objects.select_related(
+            "treatment_direction", "doctor", "patient"
+        )
+        .filter(patient__deleted_at__isnull=True)
+        .filter(doctor__deleted_at__isnull=True)
+        .filter(date_time__gte=datetime.now(date_time.tzinfo))
     )
     for visit in queryset:
         if date_time == visit.date_time:
@@ -57,8 +56,6 @@ class VisitSearchForm(forms.Form):
         required=False,
         label="",
         widget=forms.TextInput(
-            attrs={
-                "placeholder": "Search by date or time"
-            }
+            attrs={"placeholder": "Search by date or time"}
         ),
     )

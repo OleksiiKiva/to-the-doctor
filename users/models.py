@@ -20,8 +20,7 @@ class Specialization(SoftDeleteModel):
 class Doctor(AbstractUser, SoftDeleteModel):
     recertification_with = models.DateField(default=date.today)
     specializations = models.ManyToManyField(
-        Specialization,
-        related_name="doctors"
+        Specialization, related_name="doctors"
     )
 
     class Meta:
@@ -33,7 +32,7 @@ class Doctor(AbstractUser, SoftDeleteModel):
         return f"{self.last_name} {self.first_name}"
 
     def get_absolute_url(self):
-        return reverse("users:doctor-detail", kwargs={"pk": self.pk})
+        return reverse("user:doctor-detail", kwargs={"pk": self.pk})
 
 
 class Patient(SoftDeleteModel):
@@ -49,4 +48,4 @@ class Patient(SoftDeleteModel):
         return f"{self.last_name} {self.first_name}"
 
     def get_absolute_url(self):
-        return reverse("users:patient-detail", kwargs={"pk": self.pk})
+        return reverse("user:patient-detail", kwargs={"pk": self.pk})

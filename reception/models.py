@@ -6,13 +6,13 @@ from django.conf import settings
 from users.models import Patient, Specialization
 from utils.models import SoftDeleteModel
 
+VISIT_CHOICES = (
+    ("INIT", "Initial"),
+    ("REPT", "Repeat"),
+)
+
 
 class Visit(SoftDeleteModel):
-    VISIT_CHOICES = (
-        ("INIT", "Initial"),
-        ("REPT", "Repeat"),
-    )
-
     treatment_direction = models.ForeignKey(
         Specialization,
         null=True,

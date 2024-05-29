@@ -32,7 +32,7 @@ class DoctorModelTests(TestCase):
         self.first_name = "testFirst"
         self.last_name = "testLast"
         self.password = "TestPassword123"
-        get_user_model().objects.create_superuser(
+        get_user_model().objects.create_user(
             username=self.username,
             first_name=self.first_name,
             last_name=self.last_name,

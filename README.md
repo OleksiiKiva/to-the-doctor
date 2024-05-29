@@ -15,20 +15,20 @@ A simple service that allows the clinic administrator to make an appointment wit
 * 2️⃣ Creates a visit, indicating the direction of treatment (for example surgery, therapy, rehabilitation, etc.),
   time and date of the visit, type of visit (initial or repeat)
 
-### Implemented checks:
+### ✅ Implemented checks
 
 * date of birth of the patient (an appointment with a doctor is possible from 6 months of age)
 * expiration date of the medical certificate
 * date of registration for the visit (cannot be less than the current date)
 
-### Implemented a Soft-Delete method
+### 🔴 Implemented a Soft-Delete method
 
 * the process of removing records so that they are still present in the database but are
   not accessible to the user
 
-### The models are implemented according to the following diagram:
+### 📊 The models are implemented according to the following diagram:
 
-![models-diagram](static/picture/models-diagram.png)
+<img alt="models-diagram" src="static/picture/models-diagram.png" width="800"/>
 
 ## 🛢️Technology stack
 
@@ -93,8 +93,9 @@ A simple service that allows the clinic administrator to make an appointment wit
     ```
     python manage.py loaddata to_the_doctor_db_data.json
     ```
-    - credentials for this fixture: Admin login: `admin@site.com`. Admin password: `Admin-12345`. Doctors
-      password: `Doctor12345`
+    - credentials for this fixture:
+        - Admin login: `admin@site.com`, Admin password: `Admin-12345`
+        - Doctors password: `Doctor12345`
 1. Or create a superuser and populate the db yourself
 
 ## 📧 Contacts

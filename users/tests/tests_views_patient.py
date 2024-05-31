@@ -59,7 +59,7 @@ class PrivatePatientListViewTest(TestCase):
         self.assertTrue(response.context["is_paginated"] is True)
         self.assertTrue(len(response.context["patient_list"]) == 5)
 
-    def test_patient_list_all_manufacturers(self):
+    def test_patient_list_all_patients(self):
         response = self.client.get(PATIENT_LIST_URL + "?page=2")
         self.assertEqual(response.status_code, 200)
         self.assertTrue("is_paginated" in response.context)

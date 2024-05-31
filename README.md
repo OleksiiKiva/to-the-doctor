@@ -45,14 +45,14 @@ A simple service that allows the clinic administrator to make an appointment wit
 ## 🔀 Structure description
 
 * the app is available at: [http://localhost:8000](http://localhost:8000)
-* `/admin/` -- login to Django admin panel
-* `POST /accounts/login/` -- login
-* `POST /accounts/logout/` -- logout
-* `GET /visits/` -- list of visits (available for authorized users)
-* `POST /visits/create/` -- creating a visit
-* `GET /users/doctors/` -- current list of doctors of the medical institution
-* `GET /users/doctors/1/` -- doctor with id 1
-* `GET /users/patients/` -- current list of patients of the medical institution
+* GET `/admin/` -- login Django admin panel
+* POST `/accounts/login/` -- login
+* POST `/accounts/logout/` -- logout
+* GET `/visits/` -- get visits list (only authorized users)
+* POST `/visits/create/` -- create visit (only authorized users)
+* GET `/users/doctors/` -- current list of doctors of the medical institution
+* GET `/users/doctors/1/` -- doctor with id 1
+* GET `/users/patients/` -- current list of patients of the medical institution
 
 ## 🚀 Install using GitHub
 

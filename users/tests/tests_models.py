@@ -28,10 +28,10 @@ class SpecializationModelTests(TestCase):
 
 class DoctorModelTests(TestCase):
     def setUp(self):
-        self.username = "testUser"
-        self.first_name = "testFirst"
-        self.last_name = "testLast"
-        self.password = "TestPassword123"
+        self.username = "DocUsername"
+        self.first_name = "Firstname"
+        self.last_name = "Lastname"
+        self.password = "DocPassword123"
         get_user_model().objects.create_user(
             username=self.username,
             first_name=self.first_name,
@@ -79,9 +79,9 @@ class DoctorModelTests(TestCase):
 
 class PatientModelTests(TestCase):
     def setUp(self):
-        self.phone_number = "0672220909"
-        self.first_name = "testPatientFirst"
-        self.last_name = "testPatientLast"
+        self.phone_number = "9876543210"
+        self.first_name = "Firstname"
+        self.last_name = "Lastname"
         Patient.objects.create(
             phone_number=self.phone_number,
             first_name=self.first_name,
@@ -128,7 +128,7 @@ class PatientModelTests(TestCase):
         field_label = patient._meta.get_field("date_of_birth").verbose_name
         self.assertEqual(field_label, "date of birth")
 
-    def test_create_patient_with_date_of_birth_line(self):
+    def test_create_patient_with_default_date_of_birth_line(self):
         patient = Patient.objects.get(id=1)
         self.assertEqual(patient.date_of_birth, date.today())
 

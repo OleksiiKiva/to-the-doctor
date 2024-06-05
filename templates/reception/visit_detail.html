@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% block title %}<title>Visit details • ToTheDoctor</title>{% endblock %}
+
+{% block content %}
+  <br>
+  <a href="{% url 'reception:visit-list' %}" class="btn btn-outline-primary">
+    < Back
+  </a>
+
+  <div class="px-4 pt-5 my-5 text-center border-top border-bottom">
+    <h1 class="display-4 fw-bold text-body-emphasis">
+      Visit planned:
+      <span class="text-muted">{{ visit.date_time }}</span>
+    </h1>
+    <br>
+
+
+    <div class="col-lg-6 mx-auto">
+      <p>Doctor:
+        <a href="{% url 'user:doctor-detail' pk=visit.doctor.id %}" class="text-warning">
+         {{ visit.doctor }}
+        </a>
+      </p>
+      <br>
+
+      <p>Patient:
+        <a href="{% url 'user:patient-detail' pk=visit.patient.id %}" class="text-warning">
+          {{ visit.patient }}
+        </a>
+      </p>
+      <br>
+
+      <p class="font-weight-light text-muted">Type of visit:
+        <span class="font-weight-normal">{{ visit.get_type_of_visit_display }}, {{ visit.treatment_direction }}</span>
+      </p>
+
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+
+      <div class="d-grid gap-2 d-sm-flex justify-content-sm-center mb-5">
+        <div class="btn-group" role="group" aria-label="Group with two button">
+          <a href="{% url 'reception:visit-update' pk=visit.id %}" class="btn btn-secondary">
+            Update
+          </a>
+          <a href="{% url 'reception:visit-delete' pk=visit.id %}" class="btn btn-danger">
+            Delete
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+{% endblock %}

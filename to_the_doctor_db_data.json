@@ -1,0 +1,486 @@
+[
+  {
+    "model": "users.specialization",
+    "pk": 1,
+    "fields": {
+      "deleted_at": null,
+      "name": "admin"
+    }
+  },
+  {
+    "model": "users.specialization",
+    "pk": 2,
+    "fields": {
+      "deleted_at": null,
+      "name": "Surgery"
+    }
+  },
+  {
+    "model": "users.specialization",
+    "pk": 3,
+    "fields": {
+      "deleted_at": null,
+      "name": "Therapy"
+    }
+  },
+  {
+    "model": "users.specialization",
+    "pk": 4,
+    "fields": {
+      "deleted_at": null,
+      "name": "Rehabilitation"
+    }
+  },
+  {
+    "model": "users.doctor",
+    "pk": 1,
+    "fields": {
+      "password": "pbkdf2_sha256$600000$2gI4MWnReWa1Uhi5n3B8jO$dUuFE1GuFHTHMa7aASjc83cEHAKNLvY4x9HVGx6Am9c=",
+      "last_login": "2024-01-19T14:43:28.789",
+      "is_superuser": true,
+      "username": "admin@site.com",
+      "first_name": "admin",
+      "last_name": "site",
+      "email": "admin@site.com",
+      "is_staff": true,
+      "is_active": true,
+      "date_joined": "2023-12-28T10:20:47",
+      "deleted_at": null,
+      "recertification_with": "2050-01-01",
+      "groups": [],
+      "user_permissions": [],
+      "specializations": [
+        1
+      ]
+    }
+  },
+  {
+    "model": "users.doctor",
+    "pk": 2,
+    "fields": {
+      "password": "pbkdf2_sha256$600000$BOxumt9CHTpfW5Skgt72p7$B6+J71yaCqJzO/1q7z374a2s9KVsX3Ri4KMALvpDAWE=",
+      "last_login": "2024-05-29T16:03:18.283",
+      "is_superuser": false,
+      "username": "m_avakov",
+      "first_name": "Mikhail",
+      "last_name": "Avakov",
+      "email": "mikhail.avakov@ukr.net",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2023-12-28T14:49:36.571",
+      "deleted_at": null,
+      "recertification_with": "2024-12-20",
+      "groups": [],
+      "user_permissions": [],
+      "specializations": [
+        2
+      ]
+    }
+  },
+  {
+    "model": "users.doctor",
+    "pk": 3,
+    "fields": {
+      "password": "pbkdf2_sha256$600000$NSaZeIvUBTmqALQfUomq9z$bllQFxgE4l6i1PRXQaFGoUMBU0IkR3FSbRWAUDv6ONI=",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "s_lastov",
+      "first_name": "Sergey",
+      "last_name": "Lastov",
+      "email": "serg.lastov@ukr.net",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2023-12-28T14:52:53.490",
+      "deleted_at": null,
+      "recertification_with": "2024-12-24",
+      "groups": [],
+      "user_permissions": [],
+      "specializations": [
+        3
+      ]
+    }
+  },
+  {
+    "model": "users.doctor",
+    "pk": 4,
+    "fields": {
+      "password": "pbkdf2_sha256$600000$IWnon1wi4yMAWmPOOvRSy3$WLEQY0sjJZralmeKBqaTjnOpbj4V+H9lbEO0H8YtmjM=",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "v_kotov",
+      "first_name": "Vyacheslav",
+      "last_name": "Kotov",
+      "email": "vyacheslav.kotov@ukr.net",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2023-12-28T14:54:12.323",
+      "deleted_at": null,
+      "recertification_with": "2024-06-20",
+      "groups": [],
+      "user_permissions": [],
+      "specializations": [
+        4
+      ]
+    }
+  },
+  {
+    "model": "users.doctor",
+    "pk": 5,
+    "fields": {
+      "password": "pbkdf2_sha256$600000$VHUpeHlojMTy8FoQcWq1yW$EHJPOMUOSNmS3/L0pI8BnVCQZYs0IQpSdnF6QywO/DU=",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "v_popov",
+      "first_name": "Vladimir",
+      "last_name": "Popov",
+      "email": "vladimir.popov@ukr.net",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2023-12-28T14:55:11.221",
+      "deleted_at": null,
+      "recertification_with": "2026-01-14",
+      "groups": [],
+      "user_permissions": [],
+      "specializations": [
+        3
+      ]
+    }
+  },
+  {
+    "model": "users.doctor",
+    "pk": 6,
+    "fields": {
+      "password": "pbkdf2_sha256$600000$NdDP9myryxURz6Ynec5dly$8MJsyB5PRHAtrfwc0J0sTNMCTv+MUkOQU9wa0kYjvLA=",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "v_trofimova",
+      "first_name": "Varvara",
+      "last_name": "Trofimova",
+      "email": "varvara.trofimova@ukr.net",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2023-12-28T14:56:12.281",
+      "deleted_at": null,
+      "recertification_with": "2026-05-26",
+      "groups": [],
+      "user_permissions": [],
+      "specializations": [
+        4
+      ]
+    }
+  },
+  {
+    "model": "users.doctor",
+    "pk": 7,
+    "fields": {
+      "password": "pbkdf2_sha256$600000$wAkcxQx0KFjNS1Op1lwJcI$VxGbIca+sJbLWxER+/0EpBSPyC93H6jMrg0oLvZkIvs=",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "n_merkulov",
+      "first_name": "Nikita",
+      "last_name": "Merkulov",
+      "email": "nikita.merkulov@ukr.net",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2023-12-28T14:57:13.598",
+      "deleted_at": null,
+      "recertification_with": "2027-11-01",
+      "groups": [],
+      "user_permissions": [],
+      "specializations": [
+        2
+      ]
+    }
+  },
+  {
+    "model": "users.doctor",
+    "pk": 8,
+    "fields": {
+      "password": "pbkdf2_sha256$600000$OCqHpnioDUX6OzDg1H5Unk$1MhyUdusIrXQ2V2xSQ5Ea2p8fNt0FWSXssyTv/YtVWY=",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "i_mikhailov",
+      "first_name": "Ilya",
+      "last_name": "Mikhailov",
+      "email": "ilya.mikhailov@ukr.net",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2023-12-28T14:58:16.501",
+      "deleted_at": null,
+      "recertification_with": "2025-07-26",
+      "groups": [],
+      "user_permissions": [],
+      "specializations": [
+        4,
+        3
+      ]
+    }
+  },
+  {
+    "model": "users.doctor",
+    "pk": 9,
+    "fields": {
+      "password": "pbkdf2_sha256$600000$7ui78h5EtO3qHDTqa3JMC9$7km9VTCTKBuwatMo4jmUMN+0wZTIkkBvKk/sp2gdl/g=",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "o_bogdanov",
+      "first_name": "Oleg",
+      "last_name": "Bogdanov",
+      "email": "oleg.bogdanov@ukr.net",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2023-12-28T14:59:21.835",
+      "deleted_at": null,
+      "recertification_with": "2025-03-12",
+      "groups": [],
+      "user_permissions": [],
+      "specializations": [
+        4,
+        3
+      ]
+    }
+  },
+  {
+    "model": "users.patient",
+    "pk": 1,
+    "fields": {
+      "deleted_at": null,
+      "phone_number": "0671234567",
+      "first_name": "Polina",
+      "last_name": "Pavlova",
+      "date_of_birth": "1976-03-08"
+    }
+  },
+  {
+    "model": "users.patient",
+    "pk": 2,
+    "fields": {
+      "deleted_at": null,
+      "phone_number": "0985783948",
+      "first_name": "Alisa",
+      "last_name": "Petrova",
+      "date_of_birth": "1995-06-09"
+    }
+  },
+  {
+    "model": "users.patient",
+    "pk": 3,
+    "fields": {
+      "deleted_at": null,
+      "phone_number": "0503492876",
+      "first_name": "Anna",
+      "last_name": "Lazareva",
+      "date_of_birth": "1990-12-01"
+    }
+  },
+  {
+    "model": "users.patient",
+    "pk": 4,
+    "fields": {
+      "deleted_at": null,
+      "phone_number": "0503497685",
+      "first_name": "Asiya",
+      "last_name": "Lukyanova",
+      "date_of_birth": "1990-12-09"
+    }
+  },
+  {
+    "model": "users.patient",
+    "pk": 5,
+    "fields": {
+      "deleted_at": null,
+      "phone_number": "0984983762",
+      "first_name": "Timofey",
+      "last_name": "Pavlov",
+      "date_of_birth": "1976-04-13"
+    }
+  },
+  {
+    "model": "users.patient",
+    "pk": 6,
+    "fields": {
+      "deleted_at": null,
+      "phone_number": "0963984678",
+      "first_name": "Ilya",
+      "last_name": "Kiselev",
+      "date_of_birth": "2000-02-26"
+    }
+  },
+  {
+    "model": "users.patient",
+    "pk": 7,
+    "fields": {
+      "deleted_at": null,
+      "phone_number": "0953845040",
+      "first_name": "Elizaveta",
+      "last_name": "Timofeeva",
+      "date_of_birth": "1965-06-16"
+    }
+  },
+  {
+    "model": "users.patient",
+    "pk": 8,
+    "fields": {
+      "deleted_at": null,
+      "phone_number": "0503450987",
+      "first_name": "Mikhail",
+      "last_name": "Rybak",
+      "date_of_birth": "1965-04-04"
+    }
+  },
+  {
+    "model": "users.patient",
+    "pk": 9,
+    "fields": {
+      "deleted_at": null,
+      "phone_number": "0982061789",
+      "first_name": "Evgenia",
+      "last_name": "Latysheva",
+      "date_of_birth": "1984-10-03"
+    }
+  },
+  {
+    "model": "reception.visit",
+    "pk": 1,
+    "fields": {
+      "deleted_at": null,
+      "treatment_direction": 2,
+      "date_time": "2024-01-16T14:00:00",
+      "doctor": 2,
+      "type_of_visit": "INIT",
+      "patient": 1
+    }
+  },
+  {
+    "model": "reception.visit",
+    "pk": 2,
+    "fields": {
+      "deleted_at": null,
+      "treatment_direction": 2,
+      "date_time": "2024-01-20T10:00:00",
+      "doctor": 2,
+      "type_of_visit": "REPT",
+      "patient": 1
+    }
+  },
+  {
+    "model": "reception.visit",
+    "pk": 3,
+    "fields": {
+      "deleted_at": null,
+      "treatment_direction": 2,
+      "date_time": "2024-02-23T14:00:00",
+      "doctor": 2,
+      "type_of_visit": "REPT",
+      "patient": 6
+    }
+  },
+  {
+    "model": "reception.visit",
+    "pk": 4,
+    "fields": {
+      "deleted_at": null,
+      "treatment_direction": 3,
+      "date_time": "2024-02-25T10:00:00",
+      "doctor": 3,
+      "type_of_visit": "INIT",
+      "patient": 3
+    }
+  },
+  {
+    "model": "reception.visit",
+    "pk": 5,
+    "fields": {
+      "deleted_at": null,
+      "treatment_direction": 4,
+      "date_time": "2024-06-12T10:00:00",
+      "doctor": 8,
+      "type_of_visit": "INIT",
+      "patient": 3
+    }
+  },
+  {
+    "model": "reception.visit",
+    "pk": 6,
+    "fields": {
+      "deleted_at": null,
+      "treatment_direction": 4,
+      "date_time": "2023-12-28T19:04:00",
+      "doctor": 6,
+      "type_of_visit": "INIT",
+      "patient": 8
+    }
+  },
+  {
+    "model": "reception.visit",
+    "pk": 7,
+    "fields": {
+      "deleted_at": null,
+      "treatment_direction": 4,
+      "date_time": "2024-03-05T15:00:00",
+      "doctor": 9,
+      "type_of_visit": "REPT",
+      "patient": 4
+    }
+  },
+  {
+    "model": "reception.visit",
+    "pk": 8,
+    "fields": {
+      "deleted_at": null,
+      "treatment_direction": 4,
+      "date_time": "2024-04-15T10:00:00",
+      "doctor": 4,
+      "type_of_visit": "REPT",
+      "patient": 9
+    }
+  },
+  {
+    "model": "reception.visit",
+    "pk": 9,
+    "fields": {
+      "deleted_at": null,
+      "treatment_direction": 4,
+      "date_time": "2024-05-20T13:00:00",
+      "doctor": 4,
+      "type_of_visit": "REPT",
+      "patient": 5
+    }
+  },
+  {
+    "model": "reception.visit",
+    "pk": 10,
+    "fields": {
+      "deleted_at": null,
+      "treatment_direction": 3,
+      "date_time": "2024-05-21T17:00:00",
+      "doctor": 9,
+      "type_of_visit": "REPT",
+      "patient": 7
+    }
+  },
+  {
+    "model": "reception.visit",
+    "pk": 11,
+    "fields": {
+      "deleted_at": null,
+      "treatment_direction": 2,
+      "date_time": "2024-02-02T14:00:00",
+      "doctor": 2,
+      "type_of_visit": "REPT",
+      "patient": 9
+    }
+  },
+  {
+    "model": "reception.visit",
+    "pk": 12,
+    "fields": {
+      "deleted_at": null,
+      "treatment_direction": 3,
+      "date_time": "2024-10-01T17:00:00",
+      "doctor": 5,
+      "type_of_visit": "REPT",
+      "patient": 4
+    }
+  }
+]

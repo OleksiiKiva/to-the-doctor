@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+
+{% block title %}<title>List of patients • ToTheDoctor</title>{% endblock %}
+
+{% block content %}
+  <br>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col">
+        <a href="{% url 'reception:index' %}" role="button" class="btn btn-outline-primary">
+        < Back
+      </a>
+      </div>
+
+      <div class="col">
+        <h2 class="text-center">List of patients</h2>
+      </div>
+
+      <div class="col">
+        <a href="{% url 'user:patient-create' %}" class="btn btn-primary link-to-page">
+          Create a patient
+        </a>
+      </div>
+    </div>
+
+    {% include "includes/search.html" %}
+
+    <div class="row border-bottom px-0">
+      <div class="col">
+        <br>
+        <br>
+        {% if patient_list %}
+        <table class="table table-borderless table-hover">
+          <thead class="thead-light border-top">
+            <tr>
+              <th scope="col">Patient</th>
+              <th scope="col">Phone number</th>
+              <th scope="col">Date of birth</th>
+              <th scope="col">#</th>
+            </tr>
+          </thead>
+          {% for patient in patient_list %}
+          <tbody>
+            <tr>
+              <td>
+                <a href="{% url 'user:patient-detail' pk=patient.id %}" class="text-warning">
+                  {{ patient.first_name }} {{ patient.last_name }}
+                </a>
+              </td>
+              <td>{{ patient.phone_number }}</td>
+              <td>{{ patient.date_of_birth }}</td>
+              <td>{{ patient.id }}</td>
+            </tr>
+          </tbody>
+          {% endfor %}
+        </table>
+        {% else %}
+          {% include "includes/fail_request.html" %}
+        {% endif %}
+      </div>
+    </div>
+
+  </div>
+
+{% endblock %}

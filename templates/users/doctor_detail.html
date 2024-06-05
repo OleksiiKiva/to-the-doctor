@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+
+{% block title %}<title>Doctor details • ToTheDoctor</title>{% endblock %}
+
+{% block content %}
+  <br>
+    <a href="{% url 'user:doctor-list' %}" class="btn btn-outline-primary">
+      < Back
+    </a>
+  <br>
+  <br>
+  <br>
+
+    <div class="row">
+      <br>
+      <div class="col-md-5">
+        <img src="/static/picture/doctors/doctor.png"
+             class="img-fluid border border-secondary" width="100%">
+      </div>
+
+      <div class="col-md-2"></div>
+
+      <div class="col-md-5">
+        <h2 class="font-weight-normal">
+          {{ doctor.first_name }} {{ doctor.last_name }}
+        </h2>
+        <br>
+
+        <p>Specialization:
+          {% for specialization in doctor.specializations.all %}
+            <span class="text-muted">{{ specialization }}</span>
+          {% endfor %}
+        </p>
+
+        <p>Certificate up to:
+          <span class="text-muted">{{ doctor.recertification_with }}</span>
+        </p>
+
+
+        <p class="font-weight-light text-muted">username:
+          <span class="font-weight-normal">{{ doctor.username }}</span>
+        </p>
+
+        <p class="font-weight-light text-muted">e-mail:
+          <span class="font-weight-normal">{{ doctor.email }}</span>
+        </p>
+        <br>
+
+        {% if doctor.visits.first and doctor.visits.first.patient.deleted_at is None %}
+          {% now "o-j-N" as today_date %}
+          {% if today_date < doctor.visits.first.date_time|date:"o-j-N" %}
+            <p class="font-weight-light text-muted border-top">Nearest visit:
+              <span class="font-weight-normal">{{ doctor.visits.first.date_time }}</span>
+            </p>
+
+            <p class="font-weight-light text-muted border-bottom">Patient:
+              <a href="{% url 'user:patient-detail' pk=doctor.visits.last.patient.id %}" class="text-warning">
+                {{ doctor.visits.first.patient }}
+                {{ doctor.visits.first.date_time|date:"o-j-N" }}
+              </a>
+            </p>
+          {% endif %}
+        {% endif %}
+        <br>
+        <br>
+
+        {% if user.is_staff %}
+        <div class="btn-group" role="group" aria-label="Group with two button">
+            <a href="{% url 'user:doctor-update' pk=doctor.id %}" class="btn btn-secondary">
+              Update
+            </a>
+            <a href="{% url 'user:doctor-delete' pk=doctor.id %}" class="btn btn-danger">
+              Delete
+            </a>
+        </div>
+        {% endif %}
+
+      </div>
+
+    </div>
+
+{% endblock %}

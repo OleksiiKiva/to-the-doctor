@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+
+{% block title %}<title>Patient details • ToTheDoctor</title>{% endblock %}
+
+{% block content %}
+  <br>
+    <a href="{% url 'user:patient-list' %}" class="btn btn-outline-primary">
+      < Back
+    </a>
+  <br>
+  <br>
+  <br>
+
+  <div class="row">
+    <div class="col-md-5">
+      <img src="/static/picture/patients/patient.png"
+           class="img-fluid border border-secondary" width="100%">
+    </div>
+
+    <div class="col-md-2"></div>
+
+    <div class="col-md-5">
+      <h2 class="font-weight-normal">
+        {{ patient.first_name }} {{ patient.last_name }}
+      </h2>
+      <br>
+
+      <p>Phone number:
+        <span class="text-muted">{{ patient.phone_number }}</span>
+      </p>
+
+
+      <p class="font-weight-light text-muted">Date of birth:
+        <span class="font-weight-normal">{{ patient.date_of_birth }}</span>
+      </p>
+      <br>
+
+      {% if patient.visits.last and patient.visits.last.doctor.deleted_at is none %}
+        <p class="font-weight-light text-muted border-top">Nearest visit:
+          <span class="font-weight-normal">{{ patient.visits.last.date_time }}</span>
+        </p>
+
+        <p class="font-weight-light text-muted border-bottom">Doctor:
+          <a href="{% url 'user:doctor-detail' pk=patient.visits.last.doctor.id %}" class="text-warning">
+            {{ patient.visits.last.doctor }}
+          </a>
+        </p>
+      {% endif %}
+      <br>
+      <br>
+      <br>
+
+      <div class="btn-group" role="group" aria-label="Group with two button">
+          <a href="{% url 'user:patient-update' pk=patient.id %}" class="btn btn-secondary">
+            Update
+          </a>
+          <a href="{% url 'user:patient-delete' pk=patient.id %}" class="btn btn-danger">
+            Delete
+          </a>
+      </div>
+    </div>
+  </div>
+
+{% endblock %}

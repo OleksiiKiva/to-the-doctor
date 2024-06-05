@@ -1,0 +1,39 @@
+<header>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-3">
+    <div class="container-fluid">
+      <span class="navbar-brand">
+        <img src="/static/image/logo.png" width="40" height="40" class="d-inline-block align-top">
+      </span>
+
+      <span class="navbar-brand mb-0 h1">ToTheDoctor</span>
+
+      <div class="collapse navbar-collapse">
+        <div class="navbar-nav ms-auto">
+          <a class="nav-link" href="{% url 'reception:index' %}">Home</a>
+          <a class="nav-link" href="{% url 'reception:visit-list' %}">Visits</a>
+          <a class="nav-link" href="{% url 'user:doctor-list' %}">Doctors</a>
+          <a class="nav-link" href="{% url 'user:patient-list' %}">Patients</a>
+        </div>
+      </div>
+
+      {% if is_show_counter %}
+        <span class="text-warning bg-dark mr-sm-5">
+          <small>
+            You have visited this page <strong>{{ num_visit_page }}</strong> time{{ num_visit_page|pluralize }}
+          </small>
+        </span>
+      {% endif %}
+
+      <form class="form-inline">
+        <a class="btn btn-outline-warning mr-sm-2 disabled" href="{{ get_absolute_url }}">{{ user.get_username }}</a>
+        <a class="btn btn-outline-secondary mr-sm-5" href="{% url 'logout'%}?next={{request.path}}" role="button">
+          Logout
+        </a>
+        <a class="navbar-brand" href="https://github.com/OleksiiKiva/to-the-doctor.git">
+          <img src="/static/image/github.png" alt width="40" height="40">
+        </a>
+      </form>
+
+    </div>
+  </nav>
+</header>
